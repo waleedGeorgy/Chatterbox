@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+
+@theme {
+  --animate-wiggle: wiggle 2s ease-in-out infinite;
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-6deg);
+    }
+    50% {
+      transform: rotate(6deg);
+    }
+  }
+  --animate-enter: enter 0.4s ease-in-out forwards;
+  @keyframes enter {
+    0% {
+      transform: translateY(5rem);
+    }
+    100% {
+      transform: translateX(0rem);
+    }
+  }
+  --animate-leave: leave 0.4s ease-in-out forwards;
+  @keyframes leave {
+    0% {
+      transform: translateX(0rem);
+    }
+    100% {
+      transform: translateY(50rem);
+    }
+  }
+  --font-roboto: "Roboto Condensed", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --breakpoint-xs: 390px;
+}
