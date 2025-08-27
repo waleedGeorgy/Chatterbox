@@ -136,14 +136,14 @@ const ChatContainer = () => {
                   <img
                     src={message.image}
                     alt={message.text}
-                    className="max-w-3xs sm:max-w-xs md:max-w-md object-cover rounded-lg border border-base-100"
+                    className="max-w-[200px] xs:max-w-3xs sm:max-w-xs md:max-w-sm object-cover rounded-lg border border-base-100"
                   />
                 )}
                 <p className="text-sm md:text-base">{message.text}</p>
               </div>
               <div className="chat-footer text-sm font-roboto">
                 {messages.includes(message) ? (
-                  <small className="text-emerald-500 flex gap-1">
+                  <small className="text-emerald-500 flex gap-1 items-center">
                     Delivered
                     <CheckCheck className="size-4" />
                   </small>

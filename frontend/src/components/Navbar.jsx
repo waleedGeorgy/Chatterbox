@@ -7,12 +7,13 @@ import {
   LogIn,
   UserRoundPlus,
   MessageCircleMore,
+  Loader,
 } from "lucide-react";
 import { useThemeStore } from "../store/useThemeStore";
 import ThemesDropdown from "./ThemesDropdown";
 
 const Navbar = () => {
-  const { logout, authUser } = useAuthStore();
+  const { logout, authUser, isLoggingOut } = useAuthStore();
   const { theme } = useThemeStore();
 
   return (
@@ -92,8 +93,13 @@ const Navbar = () => {
                   <button
                     className="flex gap-2 items-center btn btn-ghost btn-error btn-sm"
                     onClick={logout}
+                    disabled={isLoggingOut}
                   >
-                    <LogOut className="size-5" />
+                    {isLoggingOut ? (
+                      <Loader className="size-5 animate-spin" />
+                    ) : (
+                      <LogOut className="size-5" />
+                    )}
                     <span className="hidden sm:inline">Logout</span>
                   </button>
                 </>

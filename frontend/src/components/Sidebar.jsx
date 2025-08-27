@@ -9,6 +9,8 @@ const Sidebar = () => {
     useChatStore();
   const { onlineUsers } = useAuthStore();
 
+  console.log(onlineUsers);
+
   const [showOnlineUsers, setShowOnlineUsers] = useState(false);
 
   useEffect(() => {
@@ -28,26 +30,7 @@ const Sidebar = () => {
             <span className="hidden lg:block">Contacts</span>
           </div>
           <div className="flex flex-row items-center justify-center lg:justify-start">
-            <label className="toggle toggle-xs toggle-primary">
-              <input
-                type="checkbox"
-                checked={showOnlineUsers}
-                disabled={isUsersLoading}
-                onChange={(e) => setShowOnlineUsers(e.target.checked)}
-              />
-              <X className="size-3 text-neutral" />
-              <Check className="size-3 text-neutral" />
-            </label>
-            <p
-              className={`hidden lg:block text-xs ml-2 ${
-                isUsersLoading ? "opacity-50" : ""
-              }`}
-            >
-              Show online users{" "}
-              <span className="opacity-70">{`(online ${
-                onlineUsers.length - 1
-              })`}</span>
-            </p>
+            <div className="skeleton h-4 w-48 bg-neutral"></div>
           </div>
         </div>
         <div className="divider divide-primary w-[66%] mx-auto my-0"></div>

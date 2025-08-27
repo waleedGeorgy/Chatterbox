@@ -44,7 +44,7 @@ const ProfilePage = () => {
   return (
     <div className="min-h-[calc(100vh-56px)] bg-base-200 pt-5 font-inter">
       <div className="max-w-2xl mx-auto p-6 bg-base-300 rounded-xl space-y-8 shadow-md">
-        <h1 className="text-2xl font-bold text-center font-roboto">
+        <h1 className="text-3xl font-bold text-center font-roboto">
           Profile Info
         </h1>
         <div className="flex flex-col items-center justify-center gap-y-4 w-full">
