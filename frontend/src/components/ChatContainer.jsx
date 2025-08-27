@@ -56,7 +56,7 @@ const ChatContainer = () => {
       {/* Chat messages */}
       <div className="flex-1 overflow-y-auto p-3 space-y-1">
         {messages.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full gap-1">
+          <div className="flex flex-col items-center justify-center h-full gap-1 text-center">
             <h2 className="text-xl font-bold">No messages yet.</h2>
             <p className="text-sm opacity-70">Start a conversation, say Hi!</p>
           </div>

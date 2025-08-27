@@ -5,7 +5,7 @@ import { Camera, Mail, User2, Calendar1 } from "lucide-react";
 
 const ProfilePage = () => {
   const { updateProfile, isUpdatingProfile, authUser } = useAuthStore();
-  const [selectedImg, setSelectedImg] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const userInitials = authUser?.name ? authUser.name.split(" ") : ["U"];
 
@@ -36,8 +36,13 @@ const ProfilePage = () => {
 
     reader.onload = async () => {
       const base64Img = reader.result;
-      setSelectedImg(base64Img);
-      await updateProfile({ profilePic: base64Img });
+      setSelectedImage(base64Img);
+      try {
+        await updateProfile({ profilePic: base64Img });
+      } catch (error) {
+        console.log(error);
+        setSelectedImage(null);
+      }
     };
   };
 
@@ -49,9 +54,9 @@ const ProfilePage = () => {
         </h1>
         <div className="flex flex-col items-center justify-center gap-y-4 w-full">
           <div className="avatar avatar-placeholder relative size-40">
-            {selectedImg ? (
+            {selectedImage ? (
               <img
-                src={selectedImg}
+                src={selectedImage}
                 alt={`Picture of ${authUser.name}`}
                 className="rounded-full size-full object-cover ring-primary ring-2"
               />
@@ -90,7 +95,7 @@ const ProfilePage = () => {
               Updating
             </p>
           ) : (
-            <p className="opacity-70 text-sm italic">
+            <p className="opacity-70 text-sm italic text-center">
               Update your profile picture (maximum image size is{" "}
               <span className="font-bold">3 MBs</span>).
             </p>

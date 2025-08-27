@@ -4,7 +4,6 @@ import { CircleX, CircleCheck } from "lucide-react";
 
 export default function Toast(state, message) {
   const theme = useThemeStore.getState().theme;
-  console.log(theme)
 
   toast.custom(
     (t) => (
