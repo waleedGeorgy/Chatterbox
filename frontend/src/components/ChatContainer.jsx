@@ -144,14 +144,14 @@ const ChatContainer = () => {
                 {isChatEnd === "chat-end" && (
                   <div className="chat-footer text-sm font-roboto">
                     {messages.includes(message) ? (
-                      <small className="text-emerald-500 flex gap-1 items-center">
+                      <small className="text-emerald-400 flex gap-1 items-center">
                         Delivered
-                        <CheckCheck className="size-4" />
+                        <CheckCheck className="size-3" />
                       </small>
                     ) : (
-                      <small className="text-red-500 flex gap-1 items-center">
+                      <small className="text-red-400 flex gap-1 items-center">
                         Not delivered
-                        <CircleSlash className="size-4" />
+                        <CircleSlash className="size-3" />
                       </small>
                     )}
                   </div>

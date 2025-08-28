@@ -26,6 +26,7 @@ const ProfilePage = () => {
 
     const file = e.target.files[0];
     if (!file) return;
+    
     if (file.size > MAX_SIZE) {
       Toast("error", "Chosen file is too large");
       return;
