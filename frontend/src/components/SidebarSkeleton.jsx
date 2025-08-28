@@ -1,7 +1,7 @@
 const SidebarSkeleton = () => {
   return (
     <div className="overflow-y-auto w-full">
-      {[...Array(9)].map((_, id) => (
+      {[...Array(8)].map((_, id) => (
         <div
           className="flex items-center justify-center lg:justify-start gap-3 px-3 py-2"
           key={id}
