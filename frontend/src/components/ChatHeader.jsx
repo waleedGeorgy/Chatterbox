@@ -1,6 +1,6 @@
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
-import { MessageSquareX, CircleX } from "lucide-react";
+import { MessageSquareX } from "lucide-react";
 
 const ChatHeader = () => {
   const { selectedUser, setSelectedUser } = useChatStore();
