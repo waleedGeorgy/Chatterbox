@@ -11,7 +11,7 @@ const NoChatOpen = () => {
           <MessagesSquare className="size-8 text-primary" />
         </div>
       </div>
-      <h2 className="text-lg">Select a conversation to start!</h2>
+      <h2 className="font-light tracking-wide">Select a conversation to start</h2>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { useAuthStore } from "../store/useAuthStore";
 import {
   Eye,
   EyeOff,
@@ -10,6 +9,7 @@ import {
   MessagesSquare,
   UserRound,
 } from "lucide-react";
+import { useAuthStore } from "../store/useAuthStore";
 import AuthImagePattern from "../components/AuthImagePattern";
 
 const SignupPage = () => {

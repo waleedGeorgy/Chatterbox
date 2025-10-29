@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
+import { Loader } from "lucide-react";
 import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
@@ -11,7 +12,6 @@ import {
   ProtectedUnauthRoute,
 } from "./components/ProtectedRoutes.jsx";
 import { useAuthStore } from "./store/useAuthStore";
-import { Loader } from "lucide-react";
 
 function App() {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
