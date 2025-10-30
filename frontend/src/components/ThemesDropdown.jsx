@@ -1,6 +1,6 @@
-import THEMES from "../constants/themes";
-import { useThemeStore } from "../store/useThemeStore";
 import { Palette, Check } from "lucide-react";
+import { useThemeStore } from "../store/useThemeStore";
+import THEMES from "../constants/themes";
 
 const ThemesDropdown = () => {
   const { theme, toggleTheme } = useThemeStore();

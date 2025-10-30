@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
-import { useThemeStore } from "../store/useThemeStore";
 import { CircleX, CircleCheck } from "lucide-react";
+import { useThemeStore } from "../store/useThemeStore";
 
 export default function Toast(state, message) {
   const theme = useThemeStore.getState().theme;

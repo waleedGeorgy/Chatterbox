@@ -1,5 +1,4 @@
 import { Link, NavLink, Outlet } from "react-router";
-import { useAuthStore } from "../store/useAuthStore";
 import {
   MessagesSquare,
   UserSquare,
@@ -9,6 +8,7 @@ import {
   MessageCircleMore,
   Loader,
 } from "lucide-react";
+import { useAuthStore } from "../store/useAuthStore";
 import { useThemeStore } from "../store/useThemeStore";
 import ThemesDropdown from "./ThemesDropdown";
 

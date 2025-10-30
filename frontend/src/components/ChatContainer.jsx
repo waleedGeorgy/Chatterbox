@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
+import { CheckCheck, CircleSlash } from "lucide-react";
 import { useChatStore } from "../store/useChatStore";
 import { useAuthStore } from "../store/useAuthStore";
 import ChatHeader from "./ChatHeader";
 import ChatSendMessage from "./ChatSendMessage";
 import MessagesSkeleton from "./MessagesSkeleton";
-import { CheckCheck, CircleSlash } from "lucide-react";
 
 const ChatContainer = () => {
   const {
