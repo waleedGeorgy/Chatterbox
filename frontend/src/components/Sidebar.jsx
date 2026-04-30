@@ -3,11 +3,24 @@ import { Users, Check, X } from "lucide-react";
 import { useChatStore } from "../store/useChatStore";
 import { useAuthStore } from "../store/useAuthStore";
 import SidebarSkeleton from "./SidebarSkeleton";
+import { useShallow } from "zustand/shallow";
 
 const Sidebar = () => {
   const { users, selectedUser, setSelectedUser, getUsers, isUsersLoading } =
-    useChatStore();
-  const { onlineUsers } = useAuthStore();
+    useChatStore(
+      useShallow((state) => ({
+        users: state.users,
+        selectedUser: state.selectedUser,
+        setSelectedUser: state.setSelectedUser,
+        getUsers: state.getUsers,
+        isUsersLoading: state.isUsersLoading,
+      })),
+    );
+  const { onlineUsers } = useAuthStore(
+    useShallow((state) => ({
+      onlineUsers: state.onlineUsers,
+    })),
+  );
 
   const [showOnlineUsers, setShowOnlineUsers] = useState(false);
 
@@ -64,7 +77,6 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="divider divide-primary w-[66%] mx-auto my-0"></div>
-
       {/* Sidebar users */}
       <div className="overflow-y-auto w-full">
         {filteredUsers.map((user) => (

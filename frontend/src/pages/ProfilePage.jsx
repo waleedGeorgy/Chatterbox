@@ -18,7 +18,7 @@ const ProfilePage = () => {
       day: "numeric",
       month: "long",
       year: "numeric",
-    }
+    },
   );
 
   const handleImageUpdate = async (e) => {

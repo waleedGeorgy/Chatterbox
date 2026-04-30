@@ -13,7 +13,7 @@ let THEMES = [
   "garden",
   "forest",
   "aqua",
-  "lofi",
+  "lo-fi",
   "pastel",
   "fantasy",
   "wireframe",
@@ -31,8 +31,6 @@ let THEMES = [
   "dim",
   "nord",
   "sunset",
-];
-
-THEMES = THEMES.sort();
+].sort();
 
 export default THEMES;

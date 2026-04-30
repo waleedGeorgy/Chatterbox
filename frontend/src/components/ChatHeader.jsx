@@ -1,10 +1,20 @@
 import { MessageSquareX } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
+import { useShallow } from "zustand/shallow";
 
 const ChatHeader = () => {
-  const { selectedUser, setSelectedUser } = useChatStore();
-  const { onlineUsers } = useAuthStore();
+  const { selectedUser, setSelectedUser } = useChatStore(
+    useShallow((state) => ({
+      selectedUser: state.selectedUser,
+      setSelectedUser: state.setSelectedUser,
+    })),
+  );
+  const { onlineUsers } = useAuthStore(
+    useShallow((state) => ({
+      onlineUsers: state.onlineUsers,
+    })),
+  );
 
   return (
     <div className="border-b-2 border-base-200 p-2 bg-gradient-to-r from-base-300 to-primary/70">

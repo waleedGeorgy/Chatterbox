@@ -49,7 +49,7 @@ const SignupPage = () => {
           <form onSubmit={handleFormSubmit} className="space-y-4">
             <div className="form-control space-y-1">
               <label className="label">
-                <span className="label-text font-medium">Name</span>
+                <span className="label-text font-medium">Name*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-4 left-0 pl-3 flex items-center pointer-events-none z-10">
@@ -70,7 +70,7 @@ const SignupPage = () => {
 
             <div className="form-control space-y-1">
               <label className="label">
-                <span className="label-text font-medium">Email</span>
+                <span className="label-text font-medium">Email*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -90,7 +90,7 @@ const SignupPage = () => {
 
             <div className="form-control space-y-1">
               <label className="label">
-                <span className="label-text font-medium">Password</span>
+                <span className="label-text font-medium">Password*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -122,7 +122,15 @@ const SignupPage = () => {
               <button
                 type="submit"
                 className="btn btn-block sm:btn-wide btn-accent rounded-lg mt-2"
-                disabled={isSigningUp}
+                disabled={
+                  isSigningUp ||
+                  !formData.email ||
+                  !formData.password ||
+                  !formData.name ||
+                  formData.email.trim().length === 0 ||
+                  formData.password.trim().length === 0 ||
+                  formData.name.trim().length === 0
+                }
               >
                 {isSigningUp ? (
                   <>

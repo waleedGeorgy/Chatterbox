@@ -5,6 +5,7 @@ import { useAuthStore } from "../store/useAuthStore";
 import ChatHeader from "./ChatHeader";
 import ChatSendMessage from "./ChatSendMessage";
 import MessagesSkeleton from "./MessagesSkeleton";
+import { useShallow } from "zustand/shallow";
 
 const ChatContainer = () => {
   const {
@@ -14,8 +15,19 @@ const ChatContainer = () => {
     selectedUser,
     listenToNewMessages,
     stopListeningToNewMessages,
-  } = useChatStore();
-  const { authUser } = useAuthStore();
+  } = useChatStore(
+    useShallow((state) => ({
+      messages: state.messages,
+      getMessages: state.getMessages,
+      isMessagesLoading: state.isMessagesLoading,
+      selectedUser: state.selectedUser,
+      listenToNewMessages: state.listenToNewMessages,
+      stopListeningToNewMessages: state.stopListeningToNewMessages,
+    })),
+  );
+  const { authUser } = useAuthStore(
+    useShallow((state) => ({ authUser: state.authUser })),
+  );
 
   const chatEndRef = useRef(null);
 
