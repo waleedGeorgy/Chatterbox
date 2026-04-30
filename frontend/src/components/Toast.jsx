@@ -21,6 +21,6 @@ export default function Toast(state, message) {
         <p>{message}</p>
       </div>
     ),
-    { duration: 4000 }
+    { duration: 4000 },
   );
 }

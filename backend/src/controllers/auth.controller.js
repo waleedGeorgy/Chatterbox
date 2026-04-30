@@ -5,17 +5,18 @@ import { User } from "../models/user.model.js";
 
 export const signup = async (req, res) => {
   const { name, email, password } = req.body;
+
   try {
-    if (!name || name.trim().length == 0) {
+    if (!name || name.trim().length === 0) {
       return res.status(400).json({ message: "Name is required" });
     }
-    if (!email || email.trim().length == 0) {
+    if (!email || email.trim().length === 0) {
       return res.status(400).json({ message: "Email is required" });
     }
     if (!email.includes("@")) {
       return res.status(400).json({ message: "Invalid email" });
     }
-    if (!password || password.trim().length == 0) {
+    if (!password || password.trim().length === 0) {
       return res.status(400).json({ message: "Password is required" });
     }
     if (password.length < 6) {
@@ -24,9 +25,9 @@ export const signup = async (req, res) => {
         .json({ message: "Password must be at least 6 characters long" });
     }
 
-    const dbUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email });
 
-    if (dbUser) {
+    if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
 

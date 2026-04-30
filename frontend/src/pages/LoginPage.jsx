@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessagesSquare } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 import AuthImagePattern from "../components/AuthImagePattern";
+import { useShallow } from "zustand/shallow";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,7 +12,12 @@ const LoginPage = () => {
     password: "",
   });
 
-  const { isLoggingIn, login } = useAuthStore();
+  const { isLoggingIn, login } = useAuthStore(
+    useShallow((state) => ({
+      isLoggingIn: state.isLoggingIn,
+      login: state.login,
+    })),
+  );
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +48,7 @@ const LoginPage = () => {
           <form onSubmit={handleFormSubmit} className="space-y-4">
             <div className="form-control space-y-1">
               <label htmlFor="email" className="label">
-                <span className="label-text font-medium">Email</span>
+                <span className="label-text font-medium">Email*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -65,7 +71,7 @@ const LoginPage = () => {
 
             <div className="form-control space-y-1">
               <label htmlFor="password" className="label">
-                <span className="label-text font-medium">Password</span>
+                <span className="label-text font-medium">Password*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -99,7 +105,13 @@ const LoginPage = () => {
               <button
                 type="submit"
                 className="btn btn-block sm:btn-wide btn-accent rounded-lg mt-2"
-                disabled={isLoggingIn}
+                disabled={
+                  isLoggingIn ||
+                  !formData.email ||
+                  !formData.password ||
+                  formData.email.trim().length === 0 ||
+                  formData.password.trim().length === 0
+                }
               >
                 {isLoggingIn ? (
                   <>

@@ -12,9 +12,16 @@ import {
   ProtectedUnauthRoute,
 } from "./components/ProtectedRoutes.jsx";
 import { useAuthStore } from "./store/useAuthStore";
+import { useShallow } from "zustand/shallow";
 
 function App() {
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const { authUser, checkAuth, isCheckingAuth } = useAuthStore(
+    useShallow((state) => ({
+      authUser: state.authUser,
+      checkAuth: state.checkAuth,
+      isCheckingAuth: state.isCheckingAuth,
+    })),
+  );
 
   useEffect(() => {
     checkAuth();

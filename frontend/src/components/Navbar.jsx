@@ -8,18 +8,29 @@ import {
   MessageCircleMore,
   Loader,
 } from "lucide-react";
+import { useShallow } from "zustand/shallow";
 import { useAuthStore } from "../store/useAuthStore";
 import { useThemeStore } from "../store/useThemeStore";
 import ThemesDropdown from "./ThemesDropdown";
 
 const Navbar = () => {
-  const { logout, authUser, isLoggingOut } = useAuthStore();
-  const { theme } = useThemeStore();
+  const { authUser, logout, isLoggingOut } = useAuthStore(
+    useShallow((state) => ({
+      authUser: state.authUser,
+      logout: state.logout,
+      isLoggingOut: state.isLoggingOut,
+    })),
+  );
+  const { theme } = useThemeStore(
+    useShallow((state) => ({
+      theme: state.theme,
+    })),
+  );
 
   return (
     <div data-theme={theme}>
       <header className="border-b bg-base-300 border-base-300 w-full z-10 backdrop-blur-lg font-inter">
-        <div className="px-8 py-3">
+        <nav className="px-8 py-3">
           <div className="flex items-center xs:justify-between justify-center flex-wrap h-full gap-y-2">
             <div className="flex items-center gap-8">
               <Link
@@ -107,7 +118,7 @@ const Navbar = () => {
               <ThemesDropdown />
             </div>
           </div>
-        </div>
+        </nav>
       </header>
       <main>
         <Outlet />

@@ -3,9 +3,6 @@ import { io } from "socket.io-client";
 import { axiosInstance } from "../lib/axios";
 import Toast from "../components/Toast";
 
-const BASE_SERVER_URL =
-  import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
-
 export const useAuthStore = create((set, get) => ({
   authUser: null,
   onlineUsers: [],
@@ -92,6 +89,9 @@ export const useAuthStore = create((set, get) => ({
   connectSocket: () => {
     const { authUser } = get();
     if (!authUser || get().socket?.connected) return;
+
+    const BASE_SERVER_URL =
+      import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
 
     const socket = io(BASE_SERVER_URL, {
       query: {

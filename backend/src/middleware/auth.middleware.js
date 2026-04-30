@@ -29,6 +29,8 @@ export const protectRoute = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: "Something went wrong" });
+    return res
+      .status(500)
+      .json({ message: "Server Error. Something went wrong" });
   }
 };
