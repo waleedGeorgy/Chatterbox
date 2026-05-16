@@ -25,7 +25,7 @@ export const signup = async (req, res) => {
         .json({ message: "Password must be at least 6 characters long" });
     }
 
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email: { $eq: email } });
 
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
@@ -73,14 +73,14 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Password is required" });
     }
 
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email: { $eq: email } });
     if (!existingUser) {
       return res.status(400).json({ message: "User does not exist" });
     }
 
     const isPasswordMatching = await bcrypt.compare(
       password,
-      existingUser.password
+      existingUser.password,
     );
     if (!isPasswordMatching) {
       return res.status(400).json({ message: "Invalid credentials" });
@@ -141,7 +141,7 @@ export const updateProfile = async (req, res) => {
       {
         profilePic: secured_url,
       },
-      { new: true }
+      { new: true },
     );
 
     return res.status(200).json(updatedUser);
